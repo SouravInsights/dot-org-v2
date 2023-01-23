@@ -10,7 +10,13 @@ interface Props {
 const SiteLayout = ({ children }: Props) => (
   <Flex layerStyle='primaryGradient'>
     <Flex maxW='100rem' py='1rem' mx='auto' overflowX='hidden'>
-      <Flex width='100vw' minHeight='100vh' direction='column' justifyContent='space-between' alignItems='center'>
+      <Flex
+        width='100vw'
+        maxWidth='100%'
+        minHeight='100vh'
+        direction='column'
+        justifyContent='space-between'
+        alignItems='center'>
         <Box px={{ base: '2rem', lg: '5rem' }} w='100%'>
           <Nav />
         </Box>

@@ -1,10 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 import { gql } from 'graphql-request';
+import { BLOG_DETAIL_FRAGMENT } from '../queries/blogs';
 
 export const BLOG_CREATE_MUTATION = gql`
-  mutation BlogInsertMutation($consultation: consultations_insert_input!) {
+  mutation BlogInsertMutation($blog: blogs_insert_input!) {
     insert_blogs_one(object: $blog) {
-      id
+      ...BlogDetailFragment
     }
   }
+  ${BLOG_DETAIL_FRAGMENT}
 `;

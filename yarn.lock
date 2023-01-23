@@ -2847,16 +2847,6 @@
   resolved "https://registry.yarnpkg.com/@fontsource/jetbrains-mono/-/jetbrains-mono-4.5.12.tgz#d965dca932f0ecf5379013f4dff3aec7b817b91b"
   integrity sha512-LJF1ala1/u+wXZmESFqIk08FA9yGX4/uAAleCHmXUMgEjvNAYFHUQQ7eK5hQQoBOwh99cU5suTrqYqEkgzwzPA==
 
-"@fontsource/texturina@^4.5.11":
-  version "4.5.12"
-  resolved "https://registry.yarnpkg.com/@fontsource/texturina/-/texturina-4.5.12.tgz#f0c9db06647b7589af6543e69067061702553951"
-  integrity sha512-Jz+hxWTfMbUDc76ndGOHLtICqPPoA4edf6/vUbTCjhKZTACjdUn807r8wuDkRgBSUahRuRdLEnP9+68v5cJsKw==
-
-"@fontsource/uncial-antiqua@^4.5.10":
-  version "4.5.10"
-  resolved "https://registry.yarnpkg.com/@fontsource/uncial-antiqua/-/uncial-antiqua-4.5.10.tgz#ee86ccd852810b62d451ae9afe929b0d9efc1e38"
-  integrity sha512-FRM+PUZHv7q84vG4iMzy+UdeE2bz6vOaB48edOex/B8S4z/OzGn0FE1fb537kPWYIg1EsodTskksHlYvKtEw4Q==
-
 "@graphql-typed-document-node/core@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.1.tgz#076d78ce99822258cf813ecc1e7fa460fa74d052"
@@ -13205,7 +13195,7 @@ react-remove-scroll@^2.5.4:
     use-callback-ref "^1.3.0"
     use-sidecar "^1.1.2"
 
-react-select@5.7.0:
+react-select@5.7.0, react-select@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.7.0.tgz#82921b38f1fcf1471a0b62304da01f2896cd8ce6"
   integrity sha512-lJGiMxCa3cqnUr2Jjtg9YHsaytiZqeNOKeibv6WF5zbK/fPegZ1hg3y/9P1RZVLhqBTs0PfqQLKuAACednYGhQ==
