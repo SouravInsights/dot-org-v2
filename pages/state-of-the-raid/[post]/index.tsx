@@ -63,6 +63,7 @@ function PostPage({ post }: Props) {
   const publishTime = new Date(_.get(post, 'created_at'));
 
   const publishString = `${getMonthString(publishTime)} ${publishTime.getDate()} ${publishTime.getFullYear()}`;
+
   return (
     <CMSPageTemplate>
       <PageTitle title='State of The Raid' />
@@ -70,21 +71,21 @@ function PostPage({ post }: Props) {
         <VStack>
           {_.get(post, 'heroImage') && <Image src={_.get(post, 'heroImage')} maxHeight='200' mb='2rem' />}
           <Box width='500px'>
-            <Heading as='h1'>{_.get(post, 'postTitle')}</Heading>
+            <Heading as='h1'>{_.get(post, 'title')}</Heading>
             <Text>
-              Published by {_.get(post, 'authorName')} | {publishString}
+              Published by {_.get(post, 'author')} | {publishString}
             </Text>
             <Text>{_.get(post, 'description')}</Text>
             <Box height='3rem' />
             <Box width='100%' height='1px' backgroundColor='white' />
             <Box height='3rem' />
-            <Markdown>{_.get(post, 'content.body')}</Markdown>
+            <Markdown>{_.get(post, 'content')}</Markdown>
           </Box>
         </VStack>
-        <HStack m='12rem 2rem' justify='space-between'>
-          <Image src='/assets/illustrations/LeftWing.svg' width='30vw' />
-          <Image src='/assets/illustrations/Swords.svg' />
-          <Image src='/assets/illustrations/RightWing.svg' width='30vw' />
+        <HStack m='12rem 2rem 6rem 2rem' justify='space-between'>
+          <Image src='/illustrations/LeftWing.svg' width='30vw' />
+          <Image src='/illustrations/Swords.svg' />
+          <Image src='/illustrations/RightWing.svg' width='30vw' />
         </HStack>
       </Box>
     </CMSPageTemplate>
@@ -113,16 +114,15 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   if (!post) {
     return {
       props: {
-        initialData: null,
+        post: null,
       },
     };
   }
-
   const result = await getBlogDetail(post);
-
+  const postData = result?.blogs?.[0];
   return {
     props: {
-      initialData: _.get(result, 'blogs[0]'),
+      post: postData,
     },
   };
 };

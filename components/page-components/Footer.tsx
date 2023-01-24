@@ -2,6 +2,8 @@ import { Flex, Box, SimpleGrid, VStack, HStack, Heading, Text, Icon, Image } fro
 import { FaTwitter, FaGithub, FaDiscord, FaNewspaper } from 'react-icons/fa';
 // import Image from 'next/image';
 import Link from '../atoms/ChakraNextLink';
+// eslint-disable-next-line import/no-named-as-default
+import ConnectWallet from '../atoms/ConnectWallet';
 
 import raidGuildLogo from '../../assets/illustrations/raidguild.webp';
 import raidGuildFooter from '../../assets/illustrations/raidguild-footer.png';
@@ -43,6 +45,8 @@ const Footer = () => (
       py='2rem'>
       <Box width={{ base: '150px', lg: '168px' }} mr='auto' mt='2rem'>
         <Image src={raidGuildLogo.src} alt='raidguild logo' />
+        <Box sx={{ minHeight: '1rem' }} />
+        <ConnectWallet />
       </Box>
       <SimpleGrid
         columns={{ base: 1, md: 3, lg: 3 }}

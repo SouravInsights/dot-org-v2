@@ -4,7 +4,7 @@ import { useToast } from '@raidguild/design-system';
 import { BLOG_CREATE_MUTATION } from '../gql/mutations';
 import { client } from '../gql';
 
-const useBlogsCreate = () => {
+const useBlogsCreate = (token: string) => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const toast = useToast();
@@ -15,17 +15,19 @@ const useBlogsCreate = () => {
     description: string;
     tags: string[];
     content: string;
+    slug: string;
   };
 
   const { mutate, mutateAsync, isLoading, isError, isSuccess } = useMutation(
     async (data: Blog) => {
-      return client({}).request(BLOG_CREATE_MUTATION, {
+      return client({ token }).request(BLOG_CREATE_MUTATION, {
         blog: {
           title: data.title || '',
-          author_name: data.authorName || '',
+          author: data.authorName || '',
           description: data.description || '',
           tags: data.tags || [],
           content: data.content || '',
+          slug: data.slug || '',
         },
       });
     },
@@ -34,10 +36,9 @@ const useBlogsCreate = () => {
         console.log('success', data);
         queryClient.invalidateQueries(['blogsList']);
         toast.success({ title: 'Blog created', description: 'Check Console to confirm response type' });
-        return;
-        queryClient.invalidateQueries(['blogsDetail', data.blogs[0].slug]);
-        queryClient.setQueryData(['blogsDetail', data.blogs[0].slug], data);
-        router.push(`/blogs/${data.blogs[0].slug}`);
+        queryClient.invalidateQueries(['blogsDetail', data.insert_blogs_one.slug]);
+        queryClient.setQueryData(['blogsDetail', data.insert_blogs_one.slug], data);
+        router.push(`/state-of-the-raid/${data.insert_blogs_one.slug}`);
       },
       onError: (error: any) => {
         console.log('error', error);

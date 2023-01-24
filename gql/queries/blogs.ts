@@ -6,8 +6,11 @@ export const BLOG_DETAIL_FRAGMENT = gql`
     title
     slug
     description
+    author
+    tags
     image
     created_at
+    content
   }
 `;
 

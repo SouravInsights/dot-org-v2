@@ -13,6 +13,5 @@ export const getBlogDetail = async (slug: string, token?: string) => {
   const result = await client({ token }).request(BLOG_DETAIL_QUERY, {
     slug,
   });
-
-  return camelize(_.get(result, 'bids'));
+  return result;
 };

@@ -1,11 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import _ from 'lodash';
 import { isAddress } from '@ethersproject/address';
-import {
-  client,
-  // USER_CREATE_MUTATION,
-  MEMBER_ADDRESS_LOOKUP_QUERY,
-} from '../../gql';
+import { client, MEMBER_ADDRESS_LOOKUP_QUERY } from '../../gql';
 import { IUser } from '../../types';
 
 const fetchExistingUser = async (address: string): Promise<IUser | unknown | null> =>
@@ -40,7 +36,8 @@ export const getOrCreateUser = async (address: string): Promise<IUser | unknown>
   if (!address || !isAddress(address)) {
     throw new Error('No address provided');
   }
-  return fetchExistingUser(address).then((existingUser: IUser | unknown) => {
+  const lowercaseAddress: string = _.toLower(address);
+  return fetchExistingUser(lowercaseAddress).then((existingUser: IUser | unknown) => {
     if (existingUser) {
       return Promise.resolve(existingUser);
     }
@@ -48,7 +45,7 @@ export const getOrCreateUser = async (address: string): Promise<IUser | unknown>
     //   if (newUser) {
     //     return Promise.resolve(newUser);
     //   }
-    //   return Promise.reject('Could not create user');
+    //   return Promise.reject(Error('Could not create user'));
     // });
     return Promise.reject(Error('Could not find user'));
   });

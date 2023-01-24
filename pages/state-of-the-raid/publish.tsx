@@ -16,6 +16,8 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
 // import { Web3Storage } from 'web3.storage';
+import { useSession } from 'next-auth/react';
+import _ from 'lodash';
 
 import useBlogsCreate from '../../hooks/useBlogsCreate';
 import CMSPageTemplate from '../../components/page-templates/CMSPageTemplate';
@@ -27,7 +29,9 @@ interface Props {
 }
 
 function Publish({ post }: Props) {
-  const { mutate, mutateAsync, isLoading, isError, isSuccess } = useBlogsCreate();
+  const { data: session } = useSession();
+  const token = _.get(session, 'token') || '';
+  const { mutate, mutateAsync, isLoading, isError, isSuccess } = useBlogsCreate(token);
   const localForm = useForm();
   const { reset, getValues } = localForm;
   // const [postTitle, setPostTitle] = useState('');
@@ -76,15 +80,10 @@ function Publish({ post }: Props) {
         <Input label='Author Name' name='authorName' localForm={localForm} />
         {/* Description */}
         <Input label='Brief Summary' name='description' localForm={localForm} />
+        {/* Slug */}
+        <Input label='Slug' name='slug' localForm={localForm} />
         {/* Image */}
-        {/* <VStack
-            align='flex-start'
-            width='100%'
-          >
-          <Text size='lg'>Hero Image:</Text>
-          <Input borderColor='primary.500' w='100%' onChange={(event) => handleImage(event.target.files[0])} type='file' />
-          {imagePath && <Image src={imagePath} />}
-        </VStack> */}
+
         {/* Tags */}
         <VStack alignItems='flex-start' width='100%'>
           <Text size='lg'>Post Tags:</Text>
