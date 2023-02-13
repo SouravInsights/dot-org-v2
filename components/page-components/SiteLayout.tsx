@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Flex, Box } from '@raidguild/design-system';
 import Nav from './Nav';
 import Footer from './Footer';
@@ -7,7 +7,7 @@ interface Props {
   children: ReactNode;
 }
 
-const SiteLayout = ({ children }: Props) => (
+const SiteLayout: React.FC<Props> = ({ children }: Props) => (
   <Flex layerStyle='primaryGradient'>
     <Flex width='100%' minHeight='100vh' direction='column' justifyContent='space-between' alignItems='center'>
       <Box px={{ base: '2rem', lg: '5rem' }} w='100%'>
