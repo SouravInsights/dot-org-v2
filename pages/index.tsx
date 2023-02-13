@@ -15,17 +15,15 @@ const Home = () => {
   return (
     <>
       <Meta />
-      <Box layerStyle='primaryBackground' height='100vh' width='100vw'>
-        <Flex maxW='100rem' mx='auto' overflowX='hidden'>
-          <Flex height='100%' width='100%' direction='column'>
-            <Hero />
-            <Manifesto />
-            <Services />
-            <Portfolio />
-            <Join />
-            <Supporters />
-            <Footer />
-          </Flex>
+      <Box backgroundColor='black' height='100vh' width='100%'>
+        <Flex height='100%' width='100%' direction='column'>
+          <Hero />
+          <Manifesto />
+          <Services />
+          <Portfolio />
+          <Join />
+          <Supporters />
+          <Footer />
         </Flex>
       </Box>
     </>
